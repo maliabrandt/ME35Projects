@@ -1,4 +1,10 @@
-#hoscotch x simon says code
+#Malia Brandt and Alex Wardwell
+#hopscotch.py
+#This file contains the Hopscotch class. This class is able to create a randomized pattern for the 
+#user to follow. It then stores and displays the pattern on the neopixels. It can detect the pattern of buttons 
+#pressed by the user, comparing themt to the correct pattern generated. If a wrong step is detected, the
+#process repeats, generating and displaying a new pattern. If the user gets to the last row without messing up, 
+#there is a light show and the mario theme plays on the buzzer
 
 #randomize pattern (which square per row)
 #remember that pattern
@@ -97,7 +103,8 @@ class Hopscotch():
             self.neo_off(self.leds[2*i])
             self.neo_off(self.leds[2*i+1])
             time.sleep(0.5)
-            
+
+    #display winning pattern, long version
     async def winning_pattern(self):
         self.neopixels_off()
         for m in range(1):
@@ -124,7 +131,8 @@ class Hopscotch():
             await asyncio.sleep(0.35)
             self.neopixels_off()
             await asyncio.sleep(0.35)
-            
+
+    #winning pattern alternate version, shorter
     def alt_winning_pattern(self):
         colors = [(255,0,0),(125,125,0),(0,255,0)]
         for x in range(2):
@@ -135,7 +143,7 @@ class Hopscotch():
         self.neopixels_on(colors[2])
         
 
-    #random number generator
+    #random number generator for pattern 
     #1 = Right, 2 = Left, 3 = Both
     def make_pattern(self):
         for i in range(0,5):
