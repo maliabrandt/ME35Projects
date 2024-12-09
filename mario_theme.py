@@ -1,10 +1,18 @@
+#Malia Brandt and Julian Moody
+#December 2024
+#mario_theme.py
+#This code defines frequency notes on the raspberry pi pico buzzer, then plays the 
+#mario victory theme song. This will be played when the hopscotch game is finished correctly. 
+#Code outline created by ChatGPT, code edited by Malia, melody transcribed by Malia, Julian, and Alex
+
 from machine import Pin, PWM
 import time, asyncio
 
 
-
+#plays the mario theme song
 async def play_mario_theme():
 
+    # Buzzer instance 
     buzzer = Pin('GPIO18', Pin.OUT) 
     pwm = PWM(buzzer)
     
@@ -32,7 +40,7 @@ async def play_mario_theme():
         'REST': 8
     }
 
-    # Define the melody of the Super Mario Level Win theme song (in terms of notes and duration)
+    # Define the melody of the Super Mario Level Victory theme song (in terms of notes and duration)
     melody = [
             ('C', 0.1), ('E', 0.1), ('G', 0.1), ('C5', 0.1), ('E5', 0.1), ('G5', 0.2),
             ('E5', 0.1), ('REST', 0.2), ('C', 0.1), ('Ef', 0.1), ('Af', 0.1), ('C5', 0.1),
@@ -55,6 +63,7 @@ async def play_mario_theme():
         except:
             await asyncio.sleep(0.05)
 
+#Testing code
 #asyncio.run(play_mario_theme())
 
 
